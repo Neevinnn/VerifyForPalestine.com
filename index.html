@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Humanity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .verification-box {
+      background-color: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 304px; /* Standard reCAPTCHA width */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      position: relative;
+    }
+
+    .verification-content {
+      display: flex;
+      justify-content: flex-start; /* Align left */
+      align-items: center;
+      height: 60px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"]:checked::before {
+      content: '✔';
+      color: green;
+      display: block;
+      text-align: center;
+      line-height: 20px;
+      font-size: 18px;
+    }
+
+    label {
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* Position logo to the right but move it further left */
+    .logo {
+      position: absolute;
+      top: 35%; /* Adjusted to move logo up slightly */
+      right: 25px; /* Moved more to the left */
+      transform: translateY(-50%); /* Vertically center it */
+    }
+
+    .logo img {
+      width: 40px;
+    }
+
+    /* Ceasefire and terms are now positioned below the logo */
+    .ceasefire-text, .terms {
+      position: absolute;
+      right: 10px; /* Right align the text */
+      font-size: 10px;
+    }
+
+    .ceasefire-text {
+      top: 55px; /* Slightly below the logo */
+      color: #7a7474;
+    }
+
+    .terms {
+      top: 70px; /* Slightly below "CEASEFIRE now" */
+      color: #7e7d7d;
+    }
+
+    .below-box-message {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .message {
+      display: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+    }
+
+    .message span {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .trouble-link {
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .trouble-link a {
+      color: #ff0000;
+      text-decoration: none;
+    }
+
+    .trouble-link a:hover {
+      text-decoration: underline;
+    }
+
+    .bottom-note {
+      position: fixed;
+      bottom: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .bottom-note b {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="verifyText">Verify that you’re human</h1>
+  <div class="verification-box" id="verificationBox">
+    <div class="verification-content">
+      <div class="checkbox-container">
+        <input type="checkbox" id="support" onclick="showMessage()">
+        <label for="support">I stand with Palestine</label>
+      </div>
+    </div>
+    <!-- Ceasefire and terms now positioned below the logo on the right -->
+    <div class="logo">
+      <img src="captcha-logo.png" alt="logo">
+    </div>
+    <div class="ceasefire-text">CEASEFIRE now</div>
+    <div class="terms">BeingHuman - Terms</div>
+  </div>
+
+  <div class="below-box-message" id="belowBoxMessage">
+    Please click the checkbox above to prove that you don’t support genocide.
+  </div>
+
+  <div class="message" id="message">
+    <p>Thank you for supporting humanity</p>
+    <span>#FREEPALESTINE</span>
+  </div>
+
+  <div class="trouble-link" id="troubleLink">
+    <p><a href="https://www.aljazeera.com/news/2023/10/9/whats-the-israel-palestine-conflict-about-a-simple-guide">Having trouble?</a></p>
+    <p>Read history, fact check</p>
+    <p>Note that Palestine is <b>RESISTING OCCUPATION</b></p>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById('verificationBox').style.display = 'none';
+      document.getElementById('verifyText').style.display = 'none';
+      document.getElementById('belowBoxMessage').style.display = 'none';
+      document.getElementById('troubleLink').style.display = 'none';
+      document.getElementById('message').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
